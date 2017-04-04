@@ -20,7 +20,7 @@ public class App1DbHelper extends SQLiteOpenHelper {
                     App1Contract.StudentEntry._ID + " INTEGER PRIMARY KEY," +
                     App1Contract.StudentEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
                     App1Contract.StudentEntry.COLUMN_NAME_SNAME + TEXT_TYPE + COMMA_SEP +
-                    App1Contract.StudentEntry.COLUMN_NAME_PHONE + TEXT_TYPE + COMMA_SEP +
+                    App1Contract.StudentEntry.COLUMN_NAME_PHONE + TEXT_TYPE +
                     " )";
 
     private static final String SQL_CREATE_FEE_ENTRIES =
@@ -30,7 +30,7 @@ public class App1DbHelper extends SQLiteOpenHelper {
                     App1Contract.FeeEntry.COLUMN_NAME_STUDENT + ") REFERENCES" + App1Contract.StudentEntry.TABLE_NAME +
                     " (" + App1Contract.StudentEntry._ID + ")" + COMMA_SEP +
                     App1Contract.FeeEntry.COLUMN_NAME_DATE + TEXT_TYPE + COMMA_SEP +
-                    App1Contract.FeeEntry.COLUMN_NAME_AMOUNT + INT_TYPE + COMMA_SEP +
+                    App1Contract.FeeEntry.COLUMN_NAME_AMOUNT + INT_TYPE +
                     " )";
 
     private static final String SQL_CREATE_PRESENCES_ENTRIES =
@@ -40,7 +40,7 @@ public class App1DbHelper extends SQLiteOpenHelper {
                     App1Contract.PresenceEntry.COLUMN_NAME_STUDENT + ") REFERENCES" + App1Contract.StudentEntry.TABLE_NAME +
                     " (" + App1Contract.StudentEntry._ID + ")" + COMMA_SEP +
                     App1Contract.PresenceEntry.COLUMN_NAME_DATE + TEXT_TYPE + COMMA_SEP +
-                    App1Contract.PresenceEntry.COLUMN_NAME_COST + INT_TYPE + COMMA_SEP +
+                    App1Contract.PresenceEntry.COLUMN_NAME_COST + INT_TYPE +
                     " )";
 
     private static final String SQL_DELETE_STUDENTS_ENTRIES =
