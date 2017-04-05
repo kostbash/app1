@@ -21,6 +21,7 @@ public class App1DbHelper extends SQLiteOpenHelper {
                     App1Contract.StudentEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
                     App1Contract.StudentEntry.COLUMN_NAME_SNAME + TEXT_TYPE + COMMA_SEP +
                     App1Contract.StudentEntry.COLUMN_NAME_PHONE + TEXT_TYPE +
+                    App1Contract.StudentEntry.COLUMN_NAME_BALANCE + TEXT_TYPE +
                     " )";
 
     private static final String SQL_CREATE_FEE_ENTRIES =
@@ -81,11 +82,12 @@ public class App1DbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    private long insertStudent(SQLiteDatabase db, String name, String sname, String phone) {
+    private long insertStudent(SQLiteDatabase db, String name, String sname, String phone, int balance) {
         ContentValues values = new ContentValues();
         values.put(App1Contract.StudentEntry.COLUMN_NAME_NAME, name);
         values.put(App1Contract.StudentEntry.COLUMN_NAME_SNAME, sname);
         values.put(App1Contract.StudentEntry.COLUMN_NAME_PHONE, phone);
+        values.put(App1Contract.StudentEntry.COLUMN_NAME_BALANCE, balance);
 
         return db.insert(
                 App1Contract.StudentEntry.TABLE_NAME,
@@ -94,9 +96,9 @@ public class App1DbHelper extends SQLiteOpenHelper {
     }
 
     private void initData(SQLiteDatabase db) {
-        insertStudent(db, "Вася", "Петров", "+79031234567");
-        insertStudent(db, "Ваня", "Смирнов", "+79031111111");
-        insertStudent(db, "Настя", "Сидорова", "+79032222222");
+        insertStudent(db, "Вася", "Петров", "+79031234567", 100);
+        insertStudent(db, "Ваня", "Смирнов", "+79031111111", -100);
+        insertStudent(db, "Настя", "Сидорова", "+79032222222", 1000);
     }
 
 }

@@ -16,6 +16,7 @@ public class App1Contract {
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_SNAME = "sname";
         public static final String COLUMN_NAME_PHONE = "phone";
+        public static final String COLUMN_NAME_BALANCE = "balance";
     }
 
     public static abstract class FeeEntry implements BaseColumns {

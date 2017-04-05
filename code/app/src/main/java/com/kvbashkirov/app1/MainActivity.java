@@ -1,5 +1,6 @@
 package com.kvbashkirov.app1;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,10 +21,16 @@ public class MainActivity extends AppCompatActivity {
         //TODO: В AsyncTask
         App1DbHelper mDbHelper = new App1DbHelper(this);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + App1Contract.StudentEntry.TABLE_NAME, null);
+        StudentCursorAdapter cursorAdapter = new StudentCursorAdapter(this, cursor);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ListView listView = (ListView) findViewById(R.id.students_listview);
+
+        listView.setAdapter(cursorAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
